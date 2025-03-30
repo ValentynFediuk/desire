@@ -1,0 +1,111 @@
+@use "vars" as *;
+@use "sass:color";
+
+.header {
+  padding-block: 45px;
+  max-width: 1078px;
+  margin-inline: auto;
+
+  nav {
+    display: flex;
+    align-items: center;
+  }
+
+  ul {
+    display: flex;
+    gap: 80px;
+  }
+
+  ul a {
+    font-weight: bold;
+  }
+
+  &__logo {
+    margin-inline: auto;
+  }
+
+  &__menu-btn {
+    display: none;
+    margin-left: 60px;
+    position: relative;
+    z-index: 3;
+  }
+}
+
+.mobile-menu {
+  z-index: 2;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  position: fixed;
+
+  nav {
+    position: relative;
+    z-index: 3;
+    width: fit-content;
+    margin: auto;
+    padding: 30px;
+    padding-block: 50px;
+    background: color.scale($white, $lightness: -10%); // Правильний синтаксис
+    border-radius: 15px;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    min-width: 250px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  nav ul {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+  }
+
+  nav a {
+    font-weight: bold;
+  }
+
+  &-backdrop {
+    position: fixed;
+    z-index: 2;
+    inset: 0;
+    backdrop-filter: blur(3px) brightness(0.8);
+
+  }
+
+  .header__logo {
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .header {
+
+    padding-block: 10px;
+
+    &__logo {
+      margin-left: 0;
+      margin-right: auto;
+    }
+
+    ul {
+      display: none;
+
+    }
+
+    &__menu-btn {
+      display: block;
+    }
+
+    &__menu-btn img {
+      width: 28px;
+    }
+  }
+
+
+}
