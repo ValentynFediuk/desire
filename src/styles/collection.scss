@@ -1,0 +1,111 @@
+@use "vars" as *;
+@use "breakpoints" as *;
+
+.collection {
+  padding-block: 105px;
+  padding-inline: 30px;
+  max-width: 1980px;
+  width: 100%;
+  margin: 0 auto;
+  &__inner {
+  }
+  
+  &__title {
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background: $darken;
+      height: 1px;
+      width: 250px;
+    }
+  }
+  
+  &__subtitle {
+    text-align: center;
+    margin-bottom: 25px;
+  }
+  
+  &__images {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: 200px; // або як тобі треба по висоті
+    grid-auto-flow: dense; // важливо, щоб "ущільнювало" сітку
+    
+    //@include respond-to-max(xxl) {
+    //  grid-template-columns: repeat(4, 1fr);
+    //}
+    //
+    //@include respond-to-max(xl) {
+    //  grid-template-columns: repeat(3, 1fr);
+    //}
+    //
+    //@include respond-to-max(md) {
+    //  grid-template-columns: repeat(2, 1fr);
+    //}
+    //
+    //@include respond-to-max(sm) {
+    //  grid-template-columns: 1fr;
+    //}
+  }
+  
+  &__images-item {
+    position: relative;
+  }
+  
+  &__images-item-img {
+  }
+  
+  &__images-item-overlay {
+    position: absolute;
+    inset: 0;
+    background: $white;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 10px;
+    transition: opacity 0.3s ease-in-out;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+  
+  &__images-item-overlay-title {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    position: relative;
+    font-weight: 700;
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background: $darken;
+      height: 1px;
+      width: 90%;
+    }
+  }
+  
+  &__images-item-overlay-subtitle {
+    font-size: 14px;
+    font-weight: 600;
+  }
+}
+
+.container {
+}
+
+.title {
+}
