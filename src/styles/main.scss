@@ -3,6 +3,7 @@
 @use "header";
 @use "hero";
 @use "collection";
+@use "aesthetic";
 
 a {
   text-decoration: none;
@@ -31,7 +32,6 @@ body {
 
 .title {
   font-size: $title-size;
-  text-align: center;
   font-weight: 700;
   line-height: 50px;
 }
