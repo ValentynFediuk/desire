@@ -2,13 +2,18 @@
 @use "breakpoints" as *;
 
 .aesthetic {
-  background: url("/aesthetic-bg.jpg");
+  background: url("/aesthetic-bg.jpg") no-repeat;
   text-align: left;
-  padding-block: 170px;
+  background-position-y: -90px;
+  padding-block: 180px;
   max-width: 1920px;
   width: 100%;
   margin: 0 auto;
   position: relative;
+  @include respond-to-max(md) {
+    padding-block: 80px;
+    background-position-x: -150px;
+  }
   &::before {
     content: '';
     position: absolute;
