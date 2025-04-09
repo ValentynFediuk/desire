@@ -1,0 +1,48 @@
+@use "vars" as *;
+@use "breakpoints" as *;
+
+.how-it-works {
+  padding-block: 80px 110px;
+  &__inner {
+  }
+  
+  &__title {
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  
+  &__items {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  &__items-item {
+    max-width: 268px;
+    width: 100%;
+  }
+  
+  &__items-item-top {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  &__items-item-icon {
+    width: 40px;
+  }
+  
+  &__items-item-title {
+    font-weight: bold;
+  }
+  
+  &__items-item-subtitle {
+    line-height: 27px;
+  }
+}
+
+.container {
+}
+
+.title {
+}
