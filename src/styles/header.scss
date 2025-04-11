@@ -1,34 +1,55 @@
 @use "vars" as *;
 @use "sass:color";
+@use "breakpoints" as *;
 
 .header {
   padding-block: 45px;
   max-width: 1078px;
   margin-inline: auto;
-
+  @include respond-to-max(md) {
+    padding-block: 10px;
+  }
+  
   nav {
     display: flex;
     align-items: center;
   }
-
+  
   ul {
     display: flex;
     gap: 80px;
+    @include respond-to-max(md) {
+      display: none;
+    }
   }
-
+  
   ul a {
     font-weight: bold;
   }
-
+  
   &__logo {
     margin-inline: auto;
+    @include respond-to-max(md) {
+      margin-left: 0;
+      margin-right: auto;
+    }
   }
-
+  
   &__menu-btn {
     display: none;
     margin-left: 60px;
     position: relative;
     z-index: 3;
+    @include respond-to-max(md) {
+      display: block;
+      
+    }
+  }
+  
+  &__menu-btn img {
+    @include respond-to-max(md) {
+      width: 28px;
+    }
   }
 }
 
@@ -39,7 +60,7 @@
   height: 100vh;
   display: none;
   position: fixed;
-
+  
   nav {
     position: relative;
     z-index: 3;
@@ -47,7 +68,7 @@
     margin: auto;
     padding: 30px;
     padding-block: 50px;
-    background: color.scale($white, $lightness: -10%); // Правильний синтаксис
+    background: color.scale($white, $lightness: -10%);
     border-radius: 15px;
     align-items: center;
     flex-direction: column;
@@ -57,7 +78,7 @@
     top: 50%;
     transform: translateY(-50%);
   }
-
+  
   nav ul {
     display: flex;
     gap: 15px;
@@ -69,24 +90,25 @@
     border: 2px solid transparent;
     padding-block: 8px;
     cursor: pointer;
+    
     &:hover {
       color: $yellow;
       border: 2px solid currentColor;
     }
   }
-
+  
   nav a {
     font-weight: bold;
   }
-
+  
   &-backdrop {
     position: fixed;
     z-index: 2;
     inset: 0;
     backdrop-filter: blur(3px) brightness(0.8);
-
+    
   }
-
+  
   .header__logo {
     display: block;
     margin-bottom: 20px;
@@ -95,29 +117,21 @@
   }
 }
 
-
 @media (max-width: 768px) {
   .header {
-
-    padding-block: 10px;
-
+    
     &__logo {
-      margin-left: 0;
-      margin-right: auto;
+    
     }
-
+    
     ul {
-      display: none;
     }
-
+    
     &__menu-btn {
-      display: block;
     }
-
+    
     &__menu-btn img {
-      width: 28px;
     }
   }
-
-
+  
 }

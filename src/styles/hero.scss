@@ -1,10 +1,14 @@
 @use "vars" as *;
+@use "breakpoints" as *;
 @import 'slick-carousel/slick/slick.css';
 @import 'slick-carousel/slick/slick-theme.css';
 
 .hero {
   background-size: contain;
   background: url('/hero-bg.jpg') no-repeat top center;
+  @include respond-to-max(xxl) {
+    padding-block: 35px;
+  }
   
   &__inner {
     max-width: 1350px;
@@ -15,17 +19,34 @@
   &__slider-slide {
     display: flex !important;
     gap: 20px;
+    @include respond-to-max(xxl) {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
   }
   
   &__slider-slide-img {
     max-width: 700px;
     width: 100%;
+    @include respond-to-max(xxl) {
+      max-width: 300px;
+    }
+    
+    @include respond-to-max(sm) {
+      max-width: 250px;
+    }
+    
   }
   
   &__slider-slide-text {
     max-width: 635px;
     width: 100%;
     padding-top: 174px;
+    
+    @include respond-to-max(xxl) {
+      padding-top: 0;
+    }
   }
   
   &__slider-slide-text-title {
@@ -34,21 +55,49 @@
     position: relative;
     margin-bottom: 51px;
     
-    &::after {
-      content: '';
-      position: absolute;
-      background: $darken;
-      width: 185px;
-      height: 1px;
-      bottom: -25px;
-      left: 0;
+    @include respond-to-max(xxl) {
+      font-size: 70px;
+    }
+    
+    @include respond-to-max(sm) {
+      font-size: 50px;
+    }
+    
+  }
+  
+  &__slider-slide-text-title::after {
+    @include respond-to-max(sm) {
+      left: 50%;
+      transform: translateX(-50%);
     }
   }
   
+  &__slider-slide-text-title::after {
+    content: '';
+    position: absolute;
+    background: $darken;
+    width: 185px;
+    height: 1px;
+    bottom: -25px;
+    left: 0;
+    
+    @include respond-to-max(xxl) {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
   &__slider-slide-text-subtitle {
     line-height: 27px;
   }
 }
+
+.slick-dots {
+  @include respond-to-max(xxl) {
+    bottom: -45px;
+  }
+}
+
+
 
 .slick-dots li button:before {
   color: $text;
@@ -63,60 +112,5 @@
 
 .slick-dots li.slick-active button:before {
   opacity: 1;
-  text-shadow: $darken 0 0 14px;
   color: $yellow !important;
-  
-}
-
-@media (max-width: 1350px) {
-  .hero {
-    padding-block: 35px;
-    
-    &__slider-slide {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-    
-    &__slider-slide-img {
-      max-width: 300px;
-    }
-    
-    &__slider-slide-text {
-      padding-top: 0;
-    }
-    
-    &__slider-slide-text-title {
-      font-size: 70px;
-      
-      &::after {
-        left: 50%;
-        transform: translateX(-50%);
-      }
-    }
-  }
-  
-  .slick-dots {
-    bottom: -45px;
-  }
-  
-}
-
-@media (max-width: 400px) {
-  .hero {
-    
-    &__slider-slide-img {
-      max-width: 250px;
-    }
-    
-    &__slider-slide-text-title {
-      font-size: 50px;
-      
-      &::after {
-        left: 50%;
-        transform: translateX(-50%);
-      }
-    }
-  }
-  
 }
