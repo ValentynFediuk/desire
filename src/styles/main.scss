@@ -1,5 +1,5 @@
 @use "vars" as *;
-@use "breakpoints";
+@use "breakpoints" as *;
 @use "header";
 @use "hero";
 @use "collection";
@@ -42,10 +42,7 @@ body {
   width: 100%;
   margin-inline: auto;
   padding-inline: 15px;
-}
-
-@media (max-width: 768px) {
-  .container {
+  @include respond-to-max(md) {
     padding-inline: 10px;
   }
 }

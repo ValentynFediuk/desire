@@ -3,7 +3,9 @@
 
 .how-it-works {
   padding-block: 80px 110px;
-  &__inner {
+  
+  .container {
+    max-width: 900px;
   }
   
   &__title {
@@ -13,30 +15,75 @@
   
   &__items {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
   }
   
-  &__items-item {
+  &__items-row {
+    display: flex;
+  }
+  
+  &__items-row:first-of-type {
+    border-bottom: 2px solid $darken;
+    padding-bottom: 40px;
+    margin-bottom: 40px;
+    gap: 317px;
+  }
+  
+  &__items-row-item {
     max-width: 268px;
     width: 100%;
+    position: relative;
   }
   
-  &__items-item-top {
+  &__items-row &__items-row-item:first-of-type::before,
+  &__items-row &__items-row-item:last-of-type::before {
+    content: "";
+    position: absolute;
+    background: $darken;
+  }
+  
+  &__items-row:first-of-type &__items-row-item:first-of-type::before {
+    bottom: -46px;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  
+  &__items-row:first-of-type &__items-row-item:last-of-type::before {
+    bottom: -40px;
+    left: 0;
+    width: 2px;
+    height: 20px;
+  }
+  
+  &__items-row:last-of-type &__items-row-item:first-of-type::before {
+    top: -40px;
+    left: 0;
+    width: 2px;
+    height: 20px;
+  }
+  
+  &__items-row:last-of-type {
+    margin-left: 306px;
+  }
+  
+  &__items-row-item-top {
     display: flex;
     gap: 10px;
     align-items: center;
     margin-bottom: 15px;
   }
   
-  &__items-item-icon {
+  &__items-row-item-icon {
     width: 40px;
   }
   
-  &__items-item-title {
+  &__items-row-item-title {
     font-weight: bold;
   }
   
-  &__items-item-subtitle {
+  &__items-row-item-subtitle {
     line-height: 27px;
   }
 }
