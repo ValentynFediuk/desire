@@ -35,6 +35,10 @@ body {
   font-size: $title-size;
   font-weight: 700;
   line-height: 50px;
+  @include respond-to-max(md) {
+    font-size: 30px;
+    line-height: 42px;
+  }
 }
 
 .container {

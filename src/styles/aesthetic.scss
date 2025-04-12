@@ -40,14 +40,6 @@
     margin-bottom: 25px;
     position: relative;
     
-    @include respond-to-max(md) {
-      font-size: 40px;
-    }
-    
-    @include respond-to-max(sm) {
-      font-size: 35px;
-    }
-    
     &::before {
       content: '';
       position: absolute;
