@@ -1,8 +1,9 @@
-@use "vars" as *;
-@use "breakpoints" as *;
+@use "../vars" as *;
+@use "../breakpoints" as *;
 
 .gallery {
   padding-bottom: 90px;
+  
   &__nav-list {
     display: flex;
     justify-content: center;
@@ -11,6 +12,9 @@
     overflow-x: scroll;
     @include respond-to-max(lg) {
       justify-content: flex-start;
+    }
+    @include respond-to-max(sm) {
+      margin-bottom: 30px;
     }
   }
   
@@ -72,7 +76,6 @@
       grid-column: 1;
     }
     
-   
   }
   
   &__images-item {
@@ -80,7 +83,8 @@
     object-fit: cover;
   }
   
-}
-
-.container {
+  @include respond-to-max(sm) {
+    padding-bottom: 30px;
+  }
+  
 }

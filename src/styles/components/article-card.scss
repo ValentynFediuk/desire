@@ -1,0 +1,32 @@
+@use "../vars" as *;
+@use "../breakpoints" as *;
+
+.article__card {
+  max-width: 540px;
+  width: 100%;
+  &-img {
+    margin-bottom: 20px;
+    display: block;
+  }
+  
+  p {
+    color: #707070;
+    font-size: 14px;
+    line-height: 28px;
+    margin-bottom: 7px;
+  }
+  
+  h3 {
+    font-size: 26px;
+    font-weight: bold;
+    line-height: 38px;
+    
+    @include respond-to-max(sm) {
+      font-size: 19px;
+      line-height: 28px;
+    }
+  }
+  &:hover h3 {
+    text-decoration: underline;
+  }
+}

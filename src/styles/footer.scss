@@ -1,0 +1,146 @@
+@use "vars" as *;
+@use "breakpoints" as *;
+
+.footer {
+  &__top {
+    background: #DFDFDF;
+    padding: 60px 10px 80px;
+  }
+  
+  &__top-inner {
+    max-width: 1050px;
+    width: 100%;
+    margin-inline: auto;
+    display: flex;
+    justify-content: space-between;
+    @include respond-to-max(lg) {
+      gap: 60px;
+      flex-wrap: wrap;
+      justify-content: center;
+      text-align: center;
+    }
+  }
+  
+  &__top-contact-us {
+    max-width: 540px;
+    @include respond-to-max(lg) {
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+  
+  &__top-contact-us-title {
+    font-weight: bold;
+    margin-bottom: 14px;
+  }
+  
+  &__top-contact-us-subtitle {
+    color: #5A5A5A;
+    margin-bottom: 16px;
+    line-height: 27px;
+  }
+  
+  &__top-contact-us-mail {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    margin-bottom: 22px;
+    @include respond-to-max(lg) {
+      justify-content: center;
+    }
+  }
+  
+  &__top-contact-us-mail-icon {
+    width: 16px;
+  }
+  
+  &__top-contact-us-mail-link {
+    font-weight: bold;
+    font-size: 14px;
+  }
+  
+  &__top-contact-us-field {
+    display: flex;
+    gap: 10px;
+    @include respond-to-max(lg) {
+      justify-content: center;
+    }
+  }
+  
+  &__top-contact-us-field-input {
+    border: 1px solid #383636;
+    border-radius: 20px;
+    font-size: 16px;
+    padding: 6px 18px;
+    background: transparent;
+    &::placeholder {
+      color: #A1A1A1;
+    }
+  }
+  
+  &__top-contact-us-field-button {
+    background: #363838;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    width: 160px;
+    border-radius: 20px;
+  }
+  
+  &__social-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    
+  }
+  
+  &__social-list-item {
+    & span, & svg {
+      transition: $transition;
+      line-height: 28px;
+    }
+    &:hover span {
+      color: $black;
+    }
+    &:hover svg {
+      fill: $black;
+    }
+  }
+  
+  &__social-list-item svg {
+    fill: #707070;
+   
+  }
+  &__social-list-item-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #707070;
+    font-weight: 600;
+    
+  }
+  
+  &__links-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  &__links-list-item-link {
+    color: #707070;
+    font-weight: 600;
+  }
+  
+  &__bottom {
+    background: #363838;
+    padding-block: 40px;
+    color: #A1A1A1;
+    text-align: center;
+  }
+  
+  &__bottom p {
+    @include respond-to-max(lg) {
+      font-size: 14px;
+    }
+  }
+}

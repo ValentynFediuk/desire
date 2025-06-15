@@ -1,11 +1,14 @@
 @use "vars" as *;
 @use "breakpoints" as *;
+@use "components/article-card";
 @use "header";
-@use "hero";
-@use "collection";
-@use "aesthetic";
-@use "how-it-works.scss";
-@use "gallery";
+@use "footer";
+@use "homepage/hero";
+@use "homepage/collection";
+@use "homepage/aesthetic";
+@use "homepage/how-it-works";
+@use "homepage/gallery";
+@use "homepage/inspiration";
 
 a {
   text-decoration: none;
