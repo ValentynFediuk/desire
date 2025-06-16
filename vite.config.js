@@ -2,11 +2,9 @@ import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import fs from 'fs';
 
-// 🧠 Функція, яка шукає всі .html в папці "pages/"
 function getHtmlInputs(dir = 'pages') {
     const inputs = {};
 
-    // перевіряємо чи існує папка
     if (fs.existsSync(dir)) {
         fs.readdirSync(dir).forEach(file => {
             if (file.endsWith('.html')) {
@@ -20,7 +18,7 @@ function getHtmlInputs(dir = 'pages') {
 }
 
 export default defineConfig({
-    root: './', // Корінь проекту
+    root: './',
 
     build: {
         outDir: 'dist',
@@ -28,7 +26,7 @@ export default defineConfig({
         rollupOptions: {
             input: {
                 main: resolve(__dirname, 'index.html'),
-                ...getHtmlInputs('pages') // Автоматично додає HTML-файли з pages/
+                ...getHtmlInputs('pages')
             }
         },
     },
