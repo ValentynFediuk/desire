@@ -1,10 +1,11 @@
 @use "vars" as *;
 @use "sass:color";
-@use "breakpoints" as *;
+
 
 .header {
   padding-block: 45px;
   max-width: 1078px;
+  width: 100%;
   margin-inline: auto;
   @include respond-to-max(md) {
     padding-block: 10px;

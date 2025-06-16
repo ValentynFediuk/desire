@@ -1,14 +1,7 @@
 @use "vars" as *;
-@use "breakpoints" as *;
-@use "components/article-card";
+
 @use "header";
 @use "footer";
-@use "homepage/hero";
-@use "homepage/collection";
-@use "homepage/aesthetic";
-@use "homepage/how-it-works";
-@use "homepage/gallery";
-@use "homepage/inspiration";
 
 a {
   text-decoration: none;
@@ -33,6 +26,9 @@ body {
   color: $text;
   font-family: $font;
   font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .title {

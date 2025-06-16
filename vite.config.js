@@ -1,23 +1,44 @@
 import { defineConfig } from 'vite';
+import { resolve } from 'path';
+import fs from 'fs';
+
+// 🧠 Функція, яка шукає всі .html в папці "pages/"
+function getHtmlInputs(dir = 'pages') {
+    const inputs = {};
+
+    // перевіряємо чи існує папка
+    if (fs.existsSync(dir)) {
+        fs.readdirSync(dir).forEach(file => {
+            if (file.endsWith('.html')) {
+                const name = file.replace('.html', '');
+                inputs[name] = resolve(__dirname, dir, file);
+            }
+        });
+    }
+
+    return inputs;
+}
 
 export default defineConfig({
-    root: './', // The root directory for the project (relative to this file)
+    root: './', // Корінь проекту
 
-    // Configure the build output
     build: {
-        outDir: 'dist', // Output directory for production build
-        assetsDir: 'assets', // Directory to store assets in the output build
+        outDir: 'dist',
+        assetsDir: 'assets',
+        rollupOptions: {
+            input: {
+                main: resolve(__dirname, 'index.html'),
+                ...getHtmlInputs('pages') // Автоматично додає HTML-файли з pages/
+            }
+        },
     },
 
-    // Define how to serve static assets
-    publicDir: 'public', // Static assets are served directly from this directory
+    publicDir: 'public',
 
-    // Enable base path configuration if needed for deployment
-    base: '/', // Change this if you deploy your app in a sub-folder
+    base: '/',
 
-    // Configuration for the dev server
     server: {
-        open: true, // Automatically open the app in the browser on server start
-        port: 3000, // Set the development server port
+        open: true,
+        port: 3000,
     },
 });
