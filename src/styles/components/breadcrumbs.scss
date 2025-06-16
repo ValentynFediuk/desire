@@ -1,0 +1,28 @@
+@use "../vars" as *;
+.breadcrumbs {
+  background: $grey;
+  padding: 15px;
+  display: flex;
+  margin-bottom: 35px;
+  &__list {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    font-size: 14px;
+    color: #5A5A5A;
+    display: flex;
+    gap: 5px;
+  }
+  
+  &__list-item {
+  }
+  
+  &__list-item-link {
+    transition: $transition;
+    &:hover {
+      text-decoration: underline;
+      color: $black;
+      font-weight: 500;
+    }
+  }
+}

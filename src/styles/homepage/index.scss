@@ -1,10 +1,8 @@
-@use "../vars" as *;
-
 @use "../components/article-card";
+@use "../components/gallery";
 
 @use "../homepage/hero";
 @use "../homepage/collection";
 @use "../homepage/aesthetic";
 @use "../homepage/how-it-works";
-@use "../homepage/gallery";
 @use "../homepage/inspiration";
