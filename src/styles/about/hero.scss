@@ -1,0 +1,33 @@
+@use "../vars" as *;
+
+.about-hero {
+  padding-block: 150px;
+  background: url("/about-hero-bg.jpg") no-repeat center center;
+  @include respond-to-max(xl) {
+    padding-block: 130px;
+  }
+  @include respond-to-max(md) {
+    padding-block: 100px;
+  }
+  &__title {
+    text-align: center;
+    font-size: 60px;
+    line-height: 80px;
+    @include respond-to-max(xl) {
+      font-size: 40px;
+      line-height: 60px;
+    }
+    
+    @include respond-to-max(md) {
+      font-size: 30px;
+      line-height: 40px;
+    }
+
+  }
+}
+
+.container {
+}
+
+.title {
+}

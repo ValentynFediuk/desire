@@ -1,0 +1,29 @@
+@use "../vars" as *;
+
+.about-brands {
+  padding-inline: 35px;
+  
+  &__inner {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 68px;
+    justify-content: center;
+    align-items: center;
+    
+    @include respond-to-max(xl) {
+      gap: 30px;
+    }
+  }
+  
+  &__item {
+    @include respond-to-max(md) {
+      grid-column: 1 / -1;
+      max-width: 300px;
+      width: 100%;
+      margin-inline: auto;
+    }
+  }
+}
+
+.container {
+}

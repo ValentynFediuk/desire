@@ -92,6 +92,7 @@
 }
 
 .gallery--big {
+  margin-top: 35px;
   .gallery {
     &__images {
       grid-template-columns: repeat(4, 1fr);

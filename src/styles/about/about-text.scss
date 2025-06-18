@@ -1,0 +1,46 @@
+@use '../vars' as *;
+
+.about-text {
+
+  margin-block: 30px;
+  &__inner {
+    max-width: 1110px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  &__title {
+    max-width: 822px;
+    width: 100%;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 20px;
+    &:before {
+      width: 200px;
+      height: 1px;
+      background: $black;
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+    }
+  }
+  
+  &__paragraph {
+    padding-left: 285px;
+    color: #5A5A5A;
+    line-height: 27px;
+    @include respond-to-max(lg) {
+      padding-left: 0;
+    }
+    &:first-of-type {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.container {
+}
+
+.title {
+}
