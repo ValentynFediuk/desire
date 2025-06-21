@@ -67,7 +67,7 @@
   <div class="blog-wrapper">
     <main class="blog__main">
       <div class="blog__post-list">
-        <div class="blog__post">
+        <div class="blog__post" data-kind="bedroom-furniture">
           <img class="blog__post-img" src="/blog-image-1.jpg" alt="Blog Image 1">
           <div class="blog__post-info">
             August 15, 2020 | by Ann Summers | Bedroom Furniture
@@ -80,14 +80,14 @@
             pin edison bulb farm-to-table
           </p>
         </div>
-        <div class="blog__post">
+        <div class="blog__post" data-kind="design">
           <iframe class="blog__post-img blog__post-video" src="https://www.youtube.com/embed/zNghhA2cnOw?si=Xlue7nKDM7MeNzxF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           <div class="blog__post-info">
             August 12, 2020 | by Lux Morningstar | Design
           </div>
           <h2 class="blog__post-title">Authentic kogi shabby chic</h2>
         </div>
-        <div class="blog__post">
+        <div class="blog__post" data-tags="table-furniture" data-kind="table-furniture">
           <img class="blog__post-img" src="/blog-image-2.jpg" alt="Blog Image 2">
           <div class="blog__post-info">
             August 18, 2020 | by Ann Summers | Table Furniture
@@ -100,7 +100,7 @@
             pin edison bulb farm-to-table
           </p>
         </div>
-        <div class="blog__post">
+        <div class="blog__post" data-tags="bedroom-furniture" data-kind="bedroom-furniture">
           <img class="blog__post-img" src="/blog-image-1.jpg" alt="Blog Image 1">
           <div class="blog__post-info">
             August 15, 2020 | by Ann Summers | Bedroom Furniture
@@ -113,14 +113,14 @@
             pin edison bulb farm-to-table
           </p>
         </div>
-        <div class="blog__post">
+        <div class="blog__post" data-tags="design" data-kind="design">
           <iframe class="blog__post-img blog__post-video" src="https://www.youtube.com/embed/zNghhA2cnOw?si=Xlue7nKDM7MeNzxF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           <div class="blog__post-info">
             August 12, 2020 | by Lux Morningstar | Design
           </div>
           <h2 class="blog__post-title">Authentic kogi shabby chic</h2>
         </div>
-        <div class="blog__post">
+        <div class="blog__post" data-tags="table-furniture" data-kind="table-furniture">
           <img class="blog__post-img" src="/blog-image-2.jpg" alt="Blog Image 2">
           <div class="blog__post-info">
             August 18, 2020 | by Ann Summers | Table Furniture
@@ -133,7 +133,7 @@
             pin edison bulb farm-to-table
           </p>
         </div>
-        <div class="blog__post">
+        <div class="blog__post" data-tags="bedroom-furniture" data-kind="bedroom-furniture">
           <img class="blog__post-img" src="/blog-image-1.jpg" alt="Blog Image 1">
           <div class="blog__post-info">
             August 15, 2020 | by Ann Summers | Bedroom Furniture
@@ -146,14 +146,14 @@
             pin edison bulb farm-to-table
           </p>
         </div>
-        <div class="blog__post">
+        <div class="blog__post" data-tags="design" data-kind="design">
           <iframe class="blog__post-img blog__post-video" src="https://www.youtube.com/embed/zNghhA2cnOw?si=Xlue7nKDM7MeNzxF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           <div class="blog__post-info">
             August 12, 2020 | by Lux Morningstar | Design
           </div>
           <h2 class="blog__post-title">Authentic kogi shabby chic</h2>
         </div>
-        <div class="blog__post">
+        <div class="blog__post" data-tags="table-furniture" data-kind="table-furniture">
           <img class="blog__post-img" src="/blog-image-2.jpg" alt="Blog Image 2">
           <div class="blog__post-info">
             August 18, 2020 | by Ann Summers | Table Furniture
@@ -176,11 +176,12 @@
       <div class="sidebar__categories">
         <h6 class="sidebar__categories-title">Categories</h6>
         <ul class="sidebar__categories-list">
-          <li class="sidebar__categories-list-item">Dining room (1)</li>
-          <li class="sidebar__categories-list-item">Office furniture (12)</li>
-          <li class="sidebar__categories-list-item">Simple interiror design (2)</li>
-          <li class="sidebar__categories-list-item">Design (4)</li>
-          <li class="sidebar__categories-list-item">Bedroom Furniture (1)</li>
+          <li class="sidebar__categories-list-item">Dining room <span class="sidebar__categories-list-item-count" data-kind="dining-room">(1)</span></li>
+          <li class="sidebar__categories-list-item">Office furniture <span class="sidebar__categories-list-item-count" data-kind="office-furniture">(12)</span></li>
+          <li class="sidebar__categories-list-item">Table Furniture <span class="sidebar__categories-list-item-count" data-kind="table-furniture">(2)</span></li>
+          <li class="sidebar__categories-list-item">Design <span class="sidebar__categories-list-item-count" data-kind="design">(4)</span></li>
+          <li class="sidebar__categories-list-item">Bedroom Furniture <span class="sidebar__categories-list-item-count" data-kind="bedroom-furniture">(1)</span></li>
+          <li class="sidebar__categories-list-item">All <span class="sidebar__categories-list-item-count sidebar__categories-list-item-count-all" data-kind=""></span></li>
         </ul>
       </div>
       <div class="sidebar__posts">
@@ -381,5 +382,8 @@
 <script type="module" src="../src/js/sprite.js"></script>
 <script type="module" src="../src/js/menu.js"></script>
 <script type="module" src="../src/js/pagination.js"></script>
+<script type="module" src="../src/js/search.js"></script>
+<script type="module" src="../src/js/blog-articles-count.js"></script>
+<script type="module" src="../src/js/tags.js"></script>
 </body>
 </html>
