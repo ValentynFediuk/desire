@@ -1,15 +1,17 @@
 const input = document.querySelector('input[name="search"]');
 const postsPerPage = 4;
-const allPosts = Array.from(document.querySelectorAll('.blog__post[data-kind]'));
+const allPosts = Array.from(document.querySelectorAll('.blog__post[data-tags]'));
 const pagination = document.querySelector('.pagination');
 const sidebarItems = document.querySelectorAll('.sidebar__categories-list-item');
 
-let currentPage = 1;
-let filteredPosts = [...allPosts]; // всі спочатку
+// Make these variables global so they can be accessed by tags.js
+window.currentPage = 1;
+window.filteredPosts = [...allPosts]; // всі спочатку
 
 // --- Функції showPage, createPagination, updateSidebarCounts, sidebarItems click — твої, без змін
 
-function showPage(page, postsToShow = filteredPosts) {
+// Make showPage function global so it can be accessed by tags.js
+window.showPage = function(page, postsToShow = window.filteredPosts) {
   const start = (page - 1) * postsToShow.length > 0 ? (page - 1) * postsPerPage : 0;
   const end = start + postsPerPage;
 
@@ -25,7 +27,8 @@ function showPage(page, postsToShow = filteredPosts) {
   });
 }
 
-function createPagination(postsToPaginate = filteredPosts) {
+// Make createPagination function global so it can be accessed by tags.js
+window.createPagination = function(postsToPaginate = window.filteredPosts) {
   pagination.innerHTML = '';
   const totalPages = Math.ceil(postsToPaginate.length / postsPerPage);
 
@@ -35,9 +38,9 @@ function createPagination(postsToPaginate = filteredPosts) {
   prev.innerHTML = `<a href="#prev">&laquo;</a>`;
   prev.addEventListener('click', e => {
     e.preventDefault();
-    if (currentPage > 1) {
-      currentPage--;
-      showPage(currentPage, postsToPaginate);
+    if (window.currentPage > 1) {
+      window.currentPage--;
+      window.showPage(window.currentPage, postsToPaginate);
     }
   });
   pagination.appendChild(prev);
@@ -47,11 +50,11 @@ function createPagination(postsToPaginate = filteredPosts) {
     const a = document.createElement('a');
     a.href = `#${i}`;
     a.textContent = i;
-    if (i === currentPage) a.classList.add('active');
+    if (i === window.currentPage) a.classList.add('active');
     a.addEventListener('click', e => {
       e.preventDefault();
-      currentPage = i;
-      showPage(currentPage, postsToPaginate);
+      window.currentPage = i;
+      window.showPage(window.currentPage, postsToPaginate);
     });
     li.appendChild(a);
     pagination.appendChild(li);
@@ -61,9 +64,9 @@ function createPagination(postsToPaginate = filteredPosts) {
   next.innerHTML = `<a href="#next">&raquo;</a>`;
   next.addEventListener('click', e => {
     e.preventDefault();
-    if (currentPage < totalPages) {
-      currentPage++;
-      showPage(currentPage, postsToPaginate);
+    if (window.currentPage < totalPages) {
+      window.currentPage++;
+      window.showPage(window.currentPage, postsToPaginate);
     }
   });
   pagination.appendChild(next);
@@ -74,19 +77,21 @@ function updateSidebarCounts() {
   let totalCount = 0;
 
   allPosts.forEach(post => {
-    const kind = post.dataset.kind;
-    countMap[kind] = (countMap[kind] || 0) + 1;
+    const tags = post.dataset.tags;
+    // Use the first tag as the primary category
+    const primaryTag = tags ? tags.split(',')[0].trim() : '';
+    countMap[primaryTag] = (countMap[primaryTag] || 0) + 1;
     totalCount++;
   });
 
   const counters = document.querySelectorAll('.sidebar__categories-list-item-count');
 
   counters.forEach(counter => {
-    const kind = counter.dataset.kind;
-    if (kind === '') {
+    const tag = counter.dataset.kind; // Keep using dataset.kind for backward compatibility
+    if (tag === '') {
       counter.textContent = `(${totalCount})`;
     } else {
-      const count = countMap[kind] || 0;
+      const count = countMap[tag] || 0;
       counter.textContent = `(${count})`;
     }
   });
@@ -95,23 +100,31 @@ function updateSidebarCounts() {
 sidebarItems.forEach(item => {
   item.addEventListener('click', () => {
     const span = item.querySelector('.sidebar__categories-list-item-count');
-    const kind = span?.dataset.kind;
+    const category = span?.dataset.kind; // Keep using dataset.kind for backward compatibility
 
-    if (!kind) {
-      filteredPosts = [...allPosts];
+    if (!category) {
+      window.filteredPosts = [...allPosts];
     } else {
-      filteredPosts = allPosts.filter(post => post.dataset.kind === kind);
+      window.filteredPosts = allPosts.filter(post => {
+        // Check if the category is included in the comma-separated tags
+        const tags = post.dataset.tags ? post.dataset.tags.toLowerCase().split(',').map(t => t.trim()) : [];
+        return tags.includes(category.toLowerCase());
+      });
     }
 
-    currentPage = 1;
-    createPagination(filteredPosts);
-    showPage(currentPage, filteredPosts);
+    window.currentPage = 1;
+    window.createPagination(window.filteredPosts);
+    window.showPage(window.currentPage, window.filteredPosts);
 
     sidebarItems.forEach(el => el.classList.remove('active'));
     item.classList.add('active');
 
     // Очищуємо пошук, бо ми змінили категорію
     input.value = '';
+
+    // Clear tag selection
+    const tagItems = document.querySelectorAll('.sidebar__tags-list-item');
+    tagItems.forEach(el => el.classList.remove('active'));
   });
 });
 
@@ -120,21 +133,25 @@ input.addEventListener('input', () => {
   const filter = input.value.toLowerCase();
 
   // Фільтруємо за заголовком
-  filteredPosts = allPosts.filter(post => {
+  window.filteredPosts = allPosts.filter(post => {
     const title = post.querySelector('h2.blog__post-title');
     if (!title) return false;
     return title.textContent.toLowerCase().includes(filter);
   });
 
-  currentPage = 1;
-  createPagination(filteredPosts);
-  showPage(currentPage, filteredPosts);
+  window.currentPage = 1;
+  window.createPagination(window.filteredPosts);
+  window.showPage(window.currentPage, window.filteredPosts);
 
   // Якщо хочеш — можна скинути вибір категорії
   sidebarItems.forEach(el => el.classList.remove('active'));
+
+  // Clear tag selection
+  const tagItems = document.querySelectorAll('.sidebar__tags-list-item');
+  tagItems.forEach(el => el.classList.remove('active'));
   // Інакше, якщо хочеш, щоб категорія залишалась — треба поєднати фільтрацію категорії+пошуку
 });
 
 updateSidebarCounts();
-createPagination();
-showPage(currentPage);
+window.createPagination();
+window.showPage(window.currentPage);

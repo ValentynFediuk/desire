@@ -1,14 +1,19 @@
-// 1. Збираємо всі пости з data-kind
-const posts = document.querySelectorAll('.blog__post[data-kind]');
-// 2. Рахуємо скільки яких kind
+// This file now only handles counting the number of posts for each category
+// The filtering functionality is handled by pagination.js
+
+// 1. Збираємо всі пости з data-tags
+const posts = document.querySelectorAll('.blog__post[data-tags]');
+// 2. Рахуємо скільки яких tags (using first tag as primary category)
 const countMap = {};
 
 posts.forEach(post => {
-  const kind = post.dataset.kind;
-  if (countMap[kind]) {
-    countMap[kind]++;
+  const tags = post.dataset.tags;
+  // Use the first tag as the primary category
+  const primaryTag = tags ? tags.split(',')[0].trim() : '';
+  if (countMap[primaryTag]) {
+    countMap[primaryTag]++;
   } else {
-    countMap[kind] = 1;
+    countMap[primaryTag] = 1;
   }
 });
 
@@ -16,38 +21,16 @@ posts.forEach(post => {
 const counters = document.querySelectorAll('.sidebar__categories-list-item-count');
 
 counters.forEach(counter => {
-  const kind = counter.dataset.kind;
-  const count = countMap[kind] || 0;
+  const category = counter.dataset.kind; // Keep using dataset.kind for backward compatibility
+  const count = countMap[category] || 0;
   counter.textContent = `(${count})`;
 });
 
+// Set the count for "All" category
+const allCount = document.querySelector('.sidebar__categories-list-item-count-all');
+if (allCount) {
+  allCount.textContent = `(${posts.length})`;
+}
 
-// 2. Всі елементи в сайдбарі
-const sidebarItems = document.querySelectorAll('.sidebar__categories-list-item');
-
-// 3. Вішаємо слухачів на кожен пункт сайдбару
-sidebarItems.forEach(item => {
-  item.addEventListener('click', () => {
-    // Беремо span з data-kind всередині
-    const span = item.querySelector('.sidebar__categories-list-item-count');
-    const kind = span?.dataset.kind;
-
-    if (!kind) return;
-
-    // 🔄 Фільтрація постів
-    posts.forEach(post => {
-      if (post.dataset.kind === kind) {
-        post.style.display = 'block'; // показуємо
-      } else {
-        post.style.display = 'none'; // ховаємо
-      }
-    });
-
-    // 🎯 Виділяємо активний пункт в сайдбарі
-    sidebarItems.forEach(el => el.classList.remove('active'));
-    item.classList.add('active');
-  });
-});
-
-const allCount = document.querySelector('.sidebar__categories-list-item-count-all').textContent = `(${posts.length})`
-
+// The filtering functionality has been moved to pagination.js
+// to avoid conflicts and ensure proper integration with pagination

@@ -1,3 +1,8 @@
+// This file is now deprecated as the search functionality is handled by pagination.js
+// We're keeping this file to avoid breaking any dependencies, but it doesn't do anything
+
+// The original code has been commented out to avoid conflicts with pagination.js
+/*
 const input = document.querySelector('input[name="search"]');
 
 input.addEventListener("input", () => {
@@ -16,3 +21,4 @@ input.addEventListener("input", () => {
     post.style.display = titleText.includes(filter) ? "" : "none";
   });
 });
+*/

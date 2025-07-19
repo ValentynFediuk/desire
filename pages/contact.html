@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
   <link rel="stylesheet" href="/src/styles/main.scss">
+  <link rel="stylesheet" href="/src/styles/contact/index.scss">
   <title>Desire</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,7 +53,92 @@
   </div>
 </header>
 <main>
-
+  <section class="map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3740.865209668417!2d-122.41153054441416!3d37.799722030558065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808580f036475ca5%3A0xc81fd95603f6b9fd!2zQ29sdW1idXMgQXZlLCBTYW4gRnJhbmNpc2NvLCBDQSwg0KHQqNCQ!5e0!3m2!1sru!2sua!4v1752867439358!5m2!1sru!2sua" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </section>
+  <section class="contact-us">
+    <div class="container">
+      <div class="contact-us__inner">
+        <h2 class="contact-us__title title">Contact Us</h2>
+    <div class="contact-us__content">
+      <ul class="contact-us__social-list">
+        <li class="contact-us__social-list-item">
+          <svg width="28" height="18" aria-hidden="true" focusable="false">
+            <use xlink:href="#icon-facebook"></use>
+          </svg>
+        </li>
+        <li class="contact-us__social-list-item">
+          <svg width="28" height="18" aria-hidden="true" focusable="false">
+            <use xlink:href="#icon-instagram"></use>
+          </svg>
+        </li>
+        <li class="contact-us__social-list-item">
+          <svg width="28" height="18" aria-hidden="true" focusable="false">
+            <use xlink:href="#icon-pinterest"></use>
+          </svg>
+        </li>
+        <li class="contact-us__social-list-item">
+          <svg width="28" height="18" aria-hidden="true" focusable="false">
+            <use xlink:href="#icon-whatsapp"></use>
+          </svg>
+        </li>
+        <li class="contact-us__social-list-item">
+          <svg width="28" height="18" aria-hidden="true" focusable="false">
+            <use xlink:href="#icon-youtube"></use>
+          </svg>
+        </li>
+      </ul>
+      <p class="contact-us__subtile">
+        Vexillologist vape microdosing freegan pork belly deep v direct trade cray single-origin coffee street art.
+        Viral shaman mustache master cleanse, pour-over affogato poutine copper mug marfa fanny pack normcore. Lo-fi
+        pop-up banjo portland, echo park hammock
+      </p>
+      <div class="contact-us__contact-info">
+        <a href="tel:4158297934">(415) 829-7934</a>
+        <address>
+          <a href="https://www.google.com/maps?q=725+Green+St,+San+Francisco,+CA+94133" target="_blank" rel="noopener noreferrer">
+            725 Green St
+            <br>
+            San Francisco, CA 94133
+          </a>
+        </address>
+      </div>
+      <div class="contact-us__mail">
+        <svg class="footer__top-contact-us-mail-icon" width="24" height="24" aria-hidden="true" focusable="false">
+          <use xlink:href="#icon-mail"></use>
+        </svg>
+        <a class="footer__top-contact-us-mail-link" href="mailto:ouremailaddress@email.com">ouremailaddress@email.com</a>
+      </div>
+      <form class="contact-us__form" action="">
+        <div class="contact-us__form-row">
+          <label id="name">
+            <input name="name" type="text" placeholder="Your name">
+          </label>
+          <label id="email">
+            <input name="email" type="email" placeholder="Your e-mail">
+          </label>
+        </div>
+        <label id="message">
+          <textarea name="message" rows="4" placeholder="Your message"></textarea>
+        </label>
+        <button type="submit" class="contact-us__form-btn">Send</button>
+      </form>
+    </div>
+      </div>
+    </div>
+  </section>
+  <section class="contact-us__slider">
+      <div><img class="contact-us__slider-slide" src="/slider-1.jpg" alt="1"></div>
+      <div><img class="contact-us__slider-slide" src="/slider-2.jpg" alt="2"></div>
+      <div><img class="contact-us__slider-slide" src="/slider-3.jpg" alt="3"></div>
+      <div><img class="contact-us__slider-slide" src="/slider-4.jpg" alt="4"></div>
+      <div><img class="contact-us__slider-slide" src="/slider-5.jpg" alt="5"></div>
+      <div><img class="contact-us__slider-slide" src="/slider-6.jpg" alt="6"></div>
+      <div><img class="contact-us__slider-slide" src="/slider-7.jpg" alt="7"></div>
+      <div><img class="contact-us__slider-slide" src="/slider-8.jpg" alt="8"></div>
+      <div><img class="contact-us__slider-slide" src="/slider-9.jpg" alt="9"></div>
+      <div><img class="contact-us__slider-slide" src="/slider-10.jpg" alt="10"></div>
+  </section>
 </main>
 <footer class="footer">
   <div class="footer__top">
@@ -159,7 +245,7 @@
         </a>
       </li>
       <li>
-        <a href="contact.html">
+        <a href="contact.html" class="active">
           Contact
         </a>
       </li>
@@ -169,5 +255,6 @@
 </div>
 <script type="module" src="../src/js/sprite.js"></script>
 <script type="module" src="../src/js/menu.js"></script>
+<script type="module" src="../src/js/contact-us-slider.js"></script>
 </body>
 </html>

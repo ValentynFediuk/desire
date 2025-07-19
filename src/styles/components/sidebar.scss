@@ -4,9 +4,21 @@
   max-width: 350px;
   width: 100%;
   @include respond-to-max(md) {
-    display: none;
+    position: fixed;
+    background: $white;
+    right: 0;
+    top: 0;
+    padding: 15px;
+    transform: translateX(200%);
+    transition: 0.4s ease-in-out transform;
+    padding-top: 50px;
+    &.active {
+      overflow: scroll;
+      height: 100%;
+      transform: translateX(0);
+    }
   }
-  
+
   &__search {
     position: relative;
     & input {
@@ -28,41 +40,42 @@
       background: url("/search.svg") no-repeat;
     }
   }
-  
+
   &__categories {
     margin-top: 45px;
     margin-bottom: 45px;
   }
-  
+
   &__categories-title {
     font-weight: bold;
     margin-bottom: 15px;
   }
-  
+
   &__categories-list {
     display: flex;
     flex-direction: column;
     gap: 12px;
   }
-  
+
   &__categories-list-item {
+    cursor: pointer;
   }
-  
+
   &__posts {
   }
-  
+
   &__posts-title {
     font-weight: bold;
     margin-bottom: 15px;
   }
-  
+
   &__posts-list {
     display: flex;
     flex-direction: column;
     gap: 12px;
     margin-bottom: 50px;
   }
-  
+
   &__posts-list-item {
     line-height: 27px;
     & span {
@@ -70,22 +83,22 @@
       font-size: 14px;
     }
   }
-  
+
   &__tags {
     margin-bottom: 20px;
   }
-  
+
   &__tags-title {
     font-weight: bold;
     margin-bottom: 15px;
   }
-  
+
   &__tags-list {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
   }
-  
+
   &__tags-list-item {
     border-radius: 25px;
     color: #8F8D8D;
@@ -93,24 +106,32 @@
     width: fit-content;
     line-height: 28px;
     padding-inline: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &.active {
+      background-color: #333;
+      color: #fff;
+      border-color: #333;
+    }
   }
-  
+
   &__social {
   }
-  
+
   &__social-list {
     display: flex;
     gap: 20px;
   }
-  
+
   &__social-list-item {
   }
-  
+
   &__social-list-item-link {
   }
-  
+
   &__social-list-item-link-icon {
     width: 16px;
-    
+
   }
 }
